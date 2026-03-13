@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delvin's Portfolio</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+
+    <!-- Icon fonts FIRST — their ::before pseudo-elements must NEVER be touched by custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Comic+Relief:wght@400;700&family=Nunito:ital,wght@0,400;0,700;0,900&display=swap" rel="stylesheet">
+
+    <!-- custom CSS absolutely last -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+<body>
+<canvas id="pixel-canvas"></canvas>
+<div class="screen-reveal"><div class="panel left"></div><div class="panel right"></div></div>
+
+<!-- ──────────── HEADER ──────────── -->
+<header id="main-header">
+    <div class="logo-wrap">
+        <img src="img/logo/logo_1.png" id="nav-logo" class="logo-img" alt="logo">
+        <a href="#" class="logo">Delvin<span>Dev</span></a>
+    </div>
+    <i class="bx bx-menu" id="menu-icon"></i>
+    <nav><ul class="navlist">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#stats">Stats</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+    <a href="#" id="achievementsBtn" class="adv-btn">
+        <span class="adv-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+        <span>Advancements</span>
+        <img src="img/trophy.png" class="adv-trophy" alt="">
+    </a>
+</header>
+
+<div id="achievementsModal" class="achievements-modal hidden"></div>
+<div id="achievementNotification" class="achievement-notification hidden">
+    <div class="ach-toast-icon"><img id="achievementIcon" src="https://img.icons8.com/color/96/trophy.png" alt=""></div>
+    <div class="ach-toast-text">
+        <span class="toast-label">&#9733; Achievement Unlocked!</span>
+        <span id="achievementTitle"></span>
+        <span id="achievementDesc"></span>
+    </div>
+</div>
+<audio id="achievementSound" src="img/advancement_sound.mp3" preload="auto"></audio>
+<audio id="destroySound"     src="img/destroy.mp3"           preload="auto"></audio>
+<audio id="mustafaAudio"     src="img/scream.mp3"            preload="auto"></audio>
+
+<!-- ──────────── HERO (untouched) ──────────── -->
+<section class="hero" id="home">
+    <div class="hero-orb o1"></div><div class="hero-orb o2"></div><div class="hero-orb o3"></div>
+    <div class="main-content">
+        <h4 class="hero-greeting">Hi, There &#9752;</h4>
+        <h1>I'm <span class="reveal-name comic-relief-bold">Ahsan Shaheer</span></h1>
+        <p>I'm a dedicated 2D game developer passionate about creating fun and engaging games. Skilled in game design, coding, and pixel art, I bring ideas to life using tools like Godot and Unity.</p>
+        <div class="social-wrapper">
+            <a href="#" class="social-button"><div class="icon"><i class="fa-brands fa-facebook-f"></i></div><span>Facebook</span></a>
+            <a href="#" class="social-button"><div class="icon"><i class="fa-brands fa-instagram"></i></div><span>Instagram</span></a>
+            <a href="#" class="social-button"><div class="icon"><i class="fa-brands fa-x-twitter"></i></div><span>Twitter</span></a>
+            <a href="#" class="social-button"><div class="icon"><i class="fa-brands fa-youtube"></i></div><span>YouTube</span></a>
+            <a href="#" class="social-button" target="_blank"><div class="icon"><i class="fa-brands fa-github"></i></div><span>GitHub</span></a>
+            <a href="#" class="social-button" target="_blank"><div class="icon"><i class="fa-brands fa-linkedin-in"></i></div><span>LinkedIn</span></a>
+        </div>
+        <div class="main-btn">
+            <a href="#contact" class="btn">Hire me</a>
+            <a href="assets/Resume.pdf" download class="btn btn-outline">Download Resume</a>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────── ABOUT ──────────── -->
+<section class="about-v2" id="about">
+    <div class="reveal av2-left">
+        <div class="av2-img-frame">
+            <img src="./img/about.jpg" alt="Ahsan Shaheer">
+            <div class="av2-ring r1"></div>
+            <div class="av2-ring r2"></div>
+            <div class="av2-badge"><i class="fa-solid fa-gamepad"></i><div><strong>5+</strong><span>Years XP</span></div></div>
+        </div>
+    </div>
+    <div class="reveal av2-right" style="--rd:120ms">
+        <div class="pill-tag"><i class="fa-solid fa-user"></i> About Me</div>
+        <h2 class="sec-title">Crafting <span>Worlds</span> One Pixel at a Time</h2>
+        <p class="av2-bio">I build 2D games with heart — from the first concept to the final frame. My workflow spans engine code, pixel art, UI/UX, and web, giving every project the polish it deserves.</p>
+        <div class="av2-cards">
+            <div class="av2-card"><i class="fa-solid fa-location-dot"></i><div><small>Location</small><strong>Punjab, Pakistan</strong></div></div>
+            <div class="av2-card"><i class="fa-solid fa-envelope"></i><div><small>Email</small><strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="96f7fee5f7f8e5fef7fef3f3e4d6f3fbf7fffab8f5f9fb">[email&#160;protected]</a></strong></div></div>
+            <div class="av2-card"><i class="fa-solid fa-phone"></i><div><small>Phone</small><strong>+92 341 116 9676</strong></div></div>
+            <div class="av2-card av2-card--green"><i class="fa-solid fa-circle-check"></i><div><small>Freelance</small><strong>Available Now</strong></div></div>
+        </div>
+        <div class="av2-cta">
+            <a href="#contact" class="btn">Get In Touch</a>
+            <a href="assets/Resume.pdf" download class="btn btn-outline">Resume</a>
+        </div>
+    </div>
+    <img src="img/flower.png" class="ab-deco d1" alt=""><img src="img/flower.png" class="ab-deco d2" alt="">
+    <img src="img/sparkle.png" class="ab-deco d3" alt=""><img src="img/sparkle.png" class="ab-deco d4" alt="">
+</section>
+
+<!-- ──────────── SKILLS ──────────── -->
+<section class="skills-v2" id="skills">
+    <div class="sv2-bg-word" aria-hidden="true">SKILLS</div>
+    <div class="reveal sec-header center">
+        <div class="pill-tag center"><i class="fa-solid fa-code"></i> Expertise</div>
+        <h2 class="sec-title">My <span>Arsenal</span></h2>
+        <p class="sec-sub">Languages I speak and tools I wield daily.</p>
+    </div>
+
+    <!-- Two columns side by side: bars left, chips right -->
+    <div class="sv2-layout">
+
+        <!-- LEFT: gamified XP bars -->
+        <div class="sv2-panel">
+            <h3 class="sv2-panel-title"><i class="fa-solid fa-terminal"></i> Languages</h3>
+            <div class="sv2-bars">
+                <div class="sv2-bar" data-pct="88" data-level="9">
+                    <div class="sv2-bar-head">
+                        <span class="sv2-bar-icon"><i class="fa-brands fa-java"></i></span>
+                        <span class="sv2-bar-name">Java</span>
+                        <span class="sv2-bar-lvl">LVL 9</span>
+                        <span class="sv2-bar-xp">88 / 100 XP</span>
+                    </div>
+                    <div class="sv2-xp-track">
+                        <div class="sv2-xp-fill"></div>
+                        <div class="sv2-xp-segments"></div>
+                    </div>
+                </div>
+                <div class="sv2-bar" data-pct="82" data-level="8">
+                    <div class="sv2-bar-head">
+                        <span class="sv2-bar-icon"><i class="fa-solid fa-c"></i></span>
+                        <span class="sv2-bar-name">C / C++</span>
+                        <span class="sv2-bar-lvl">LVL 8</span>
+                        <span class="sv2-bar-xp">82 / 100 XP</span>
+                    </div>
+                    <div class="sv2-xp-track">
+                        <div class="sv2-xp-fill"></div>
+                        <div class="sv2-xp-segments"></div>
+                    </div>
+                </div>
+                <div class="sv2-bar" data-pct="90" data-level="9">
+                    <div class="sv2-bar-head">
+                        <span class="sv2-bar-icon"><i class="fa-solid fa-hashtag"></i></span>
+                        <span class="sv2-bar-name">C#</span>
+                        <span class="sv2-bar-lvl">LVL 9</span>
+                        <span class="sv2-bar-xp">90 / 100 XP</span>
+                    </div>
+                    <div class="sv2-xp-track">
+                        <div class="sv2-xp-fill"></div>
+                        <div class="sv2-xp-segments"></div>
+                    </div>
+                </div>
+                <div class="sv2-bar" data-pct="85" data-level="9">
+                    <div class="sv2-bar-head">
+                        <span class="sv2-bar-icon"><i class="fa-brands fa-js"></i></span>
+                        <span class="sv2-bar-name">JavaScript</span>
+                        <span class="sv2-bar-lvl">LVL 9</span>
+                        <span class="sv2-bar-xp">85 / 100 XP</span>
+                    </div>
+                    <div class="sv2-xp-track">
+                        <div class="sv2-xp-fill"></div>
+                        <div class="sv2-xp-segments"></div>
+                    </div>
+                </div>
+                <div class="sv2-bar" data-pct="92" data-level="10">
+                    <div class="sv2-bar-head">
+                        <span class="sv2-bar-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="sv2-bar-name">HTML5 / CSS3</span>
+                        <span class="sv2-bar-lvl">LVL 10</span>
+                        <span class="sv2-bar-xp">92 / 100 XP</span>
+                    </div>
+                    <div class="sv2-xp-track">
+                        <div class="sv2-xp-fill"></div>
+                        <div class="sv2-xp-segments"></div>
+                    </div>
+                </div>
+                <div class="sv2-bar" data-pct="80" data-level="8">
+                    <div class="sv2-bar-head">
+                        <span class="sv2-bar-icon"><i class="fa-solid fa-dragon"></i></span>
+                        <span class="sv2-bar-name">GDScript</span>
+                        <span class="sv2-bar-lvl">LVL 8</span>
+                        <span class="sv2-bar-xp">80 / 100 XP</span>
+                    </div>
+                    <div class="sv2-xp-track">
+                        <div class="sv2-xp-fill"></div>
+                        <div class="sv2-xp-segments"></div>
+                    </div>
+                </div>
+                <div class="sv2-bar" data-pct="75" data-level="8">
+                    <div class="sv2-bar-head">
+                        <span class="sv2-bar-icon"><i class="fa-brands fa-react"></i></span>
+                        <span class="sv2-bar-name">React / ASP.NET</span>
+                        <span class="sv2-bar-lvl">LVL 8</span>
+                        <span class="sv2-bar-xp">75 / 100 XP</span>
+                    </div>
+                    <div class="sv2-xp-track">
+                        <div class="sv2-xp-fill"></div>
+                        <div class="sv2-xp-segments"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: tool chips -->
+        <div class="sv2-panel">
+            <h3 class="sv2-panel-title"><i class="fa-solid fa-toolbox"></i> Tools &amp; Software</h3>
+            <div class="sv2-chips">
+                <div class="sv2-chip"><i class="fa-solid fa-gamepad"></i> Unity</div>
+                <div class="sv2-chip"><i class="fa-solid fa-cubes"></i> Unreal Engine</div>
+                <div class="sv2-chip"><i class="fa-solid fa-chess-board"></i> Godot</div>
+                <div class="sv2-chip"><i class="fa-solid fa-paint-brush"></i> Aseprite</div>
+                <div class="sv2-chip"><i class="fa-solid fa-vector-square"></i> Illustrator</div>
+                <div class="sv2-chip"><i class="fa-solid fa-image"></i> Photoshop</div>
+                <div class="sv2-chip"><i class="fa-solid fa-cube"></i> Blender</div>
+                <div class="sv2-chip"><i class="fa-solid fa-code"></i> VS Studio</div>
+                <div class="sv2-chip"><i class="fa-solid fa-terminal"></i> VS Code</div>
+                <div class="sv2-chip"><i class="fa-solid fa-database"></i> SQLite</div>
+                <div class="sv2-chip"><i class="fa-brands fa-github"></i> GitHub</div>
+                <div class="sv2-chip"><i class="fa-brands fa-trello"></i> Trello</div>
+                <div class="sv2-chip"><i class="fa-brands fa-figma"></i> Figma</div>
+                <div class="sv2-chip"><i class="fa-solid fa-lightbulb"></i> Notion</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ──────────── PROCESS (replaces GIF showcase) ──────────── -->
+<section class="process-v2" id="process">
+    <div class="pv2-ticker" aria-hidden="true">
+        <div class="pv2-ticker-inner">
+            <span><i class="fa-solid fa-circle-dot"></i> Game Design</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Pixel Art</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Engine Code</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Level Design</span>
+            <span><i class="fa-solid fa-circle-dot"></i> UI / UX</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Web Dev</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Optimization</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Deployment</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Game Design</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Pixel Art</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Engine Code</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Level Design</span>
+            <span><i class="fa-solid fa-circle-dot"></i> UI / UX</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Web Dev</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Optimization</span>
+            <span><i class="fa-solid fa-circle-dot"></i> Deployment</span>
+        </div>
+    </div>
+    <div class="pv2-content">
+        <div class="reveal sec-header center">
+            <div class="pill-tag center dark"><i class="fa-solid fa-diagram-project"></i> How I Work</div>
+            <h2 class="sec-title light">My <span>Process</span></h2>
+        </div>
+        <div class="pv2-steps">
+            <div class="reveal pv2-step">
+                <div class="pv2-step-num">01</div>
+                <div class="pv2-step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <h4>Discover</h4>
+                <p>Deep dive into the brief — goals, audience, genre, and mood — before writing a single line of code.</p>
+            </div>
+            <div class="pv2-step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="reveal pv2-step" style="--rd:100ms">
+                <div class="pv2-step-num">02</div>
+                <div class="pv2-step-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                <h4>Design</h4>
+                <p>Wire-frames, sprite sheets, and system diagrams — the entire architecture mapped before build-time.</p>
+            </div>
+            <div class="pv2-step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="reveal pv2-step" style="--rd:200ms">
+                <div class="pv2-step-num">03</div>
+                <div class="pv2-step-icon"><i class="fa-solid fa-code"></i></div>
+                <h4>Build</h4>
+                <p>Clean, documented code in the chosen engine. Iterative builds with playable prototypes at every milestone.</p>
+            </div>
+            <div class="pv2-step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="reveal pv2-step" style="--rd:300ms">
+                <div class="pv2-step-num">04</div>
+                <div class="pv2-step-icon"><i class="fa-solid fa-bug-slash"></i></div>
+                <h4>Polish</h4>
+                <p>Rigorous QA, performance profiling, juice passes, and final fine-tuning until the product feels right.</p>
+            </div>
+            <div class="pv2-step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="reveal pv2-step" style="--rd:400ms">
+                <div class="pv2-step-num">05</div>
+                <div class="pv2-step-icon"><i class="fa-solid fa-rocket"></i></div>
+                <h4>Launch</h4>
+                <p>Deploy, publish, and support. Includes post-launch patches, feedback loops, and optional ongoing updates.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────── SERVICES ──────────── -->
+<section class="services-v2" id="services">
+    <div class="reveal sec-header center">
+        <div class="pill-tag center"><i class="fa-solid fa-briefcase"></i> What I Do</div>
+        <h2 class="sec-title">My <span>Services</span></h2>
+    </div>
+    <div class="sv2-cards-grid">
+        <div class="reveal svc-card">
+            <div class="svc-num">01</div>
+            <div class="svc-icon"><img src="./img/s-1.svg" alt="2D Game Dev"></div>
+            <h3>2D Game Development</h3>
+            <p>Full-cycle 2D games with polished mechanics, tight code, and engaging player loops built from the ground up.</p>
+            <a href="#" class="svc-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="reveal svc-card" style="--rd:80ms">
+            <div class="svc-num">02</div>
+            <div class="svc-icon"><img src="./img/s-2.png" alt="UI/UX"></div>
+            <h3>Game UI / UX Design</h3>
+            <p>Menus, HUDs, and in-game UI that feel native to your game's world and are effortless to navigate.</p>
+            <a href="#" class="svc-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="reveal svc-card" style="--rd:160ms">
+            <div class="svc-num">03</div>
+            <div class="svc-icon"><img src="./img/s-3.svg" alt="2D Assets"></div>
+            <h3>2D Asset Creation</h3>
+            <p>Custom sprites, tiles, animated characters, and backgrounds crafted in pixel art or vector style.</p>
+            <a href="#" class="svc-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="reveal svc-card" style="--rd:240ms">
+            <div class="svc-num">04</div>
+            <div class="svc-icon"><img src="./img/s-4.svg" alt="Debugging"></div>
+            <h3>Bug Fixing &amp; Optimisation</h3>
+            <p>Diagnose and eliminate performance bottlenecks, crashes, and logic errors in existing games or web apps.</p>
+            <a href="#" class="svc-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="reveal svc-card" style="--rd:320ms">
+            <div class="svc-num">05</div>
+            <div class="svc-icon"><img src="./img/s-5.svg" alt="Web Dev"></div>
+            <h3>Portfolio Websites</h3>
+            <p>Animated, responsive portfolio sites that showcase creative work with the flair it deserves.</p>
+            <a href="#" class="svc-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="reveal svc-card" style="--rd:400ms">
+            <div class="svc-num">06</div>
+            <div class="svc-icon"><img src="./img/s-6.svg" alt="Consultation"></div>
+            <h3>Code Consultation</h3>
+            <p>1-on-1 guidance on architecture, clean code patterns, and best practices for game or web projects.</p>
+            <a href="#" class="svc-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────── PROJECTS ──────────── -->
+<section class="projects-v2" id="projects">
+    <div class="prj-noise" aria-hidden="true"></div>
+    <div class="reveal sec-header center">
+        <div class="pill-tag center light-pill"><i class="fa-solid fa-layer-group"></i> Portfolio</div>
+        <h2 class="sec-title white-title">My <span>Projects</span></h2>
+    </div>
+    <div class="prj-grid">
+        <div class="prj-card"><div class="prj-thumb"><img src="projects/thumbnails/p-1.jpg" data-video="projects/p-1.mp4" class="project-thumb" alt="Breakout"><div class="prj-play"><i class="fa-solid fa-play"></i></div></div><div class="prj-info"><div class="prj-tags"><span>Godot</span><span>2D</span></div><h4>Breakout Game</h4><a href="https://github.com/your-username/project-1" target="_blank" class="prj-btn">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+        <div class="prj-card"><div class="prj-thumb"><img src="projects/thumbnails/p-2.jpg" data-video="projects/p-2.mp4" class="project-thumb" alt="Chatbot"><div class="prj-play"><i class="fa-solid fa-play"></i></div></div><div class="prj-info"><div class="prj-tags"><span>Python</span><span>AI</span></div><h4>MathSolver Chatbot</h4><a href="https://github.com/your-username/project-2" target="_blank" class="prj-btn">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+        <div class="prj-card"><div class="prj-thumb"><img src="projects/thumbnails/p-3.jpg" data-video="projects/p-3.mp4" class="project-thumb" alt="Invincible"><div class="prj-play"><i class="fa-solid fa-play"></i></div></div><div class="prj-info"><div class="prj-tags"><span>Unity</span><span>VFX</span></div><h4>Invincible Title Card</h4><a href="https://github.com/your-username/project-3" target="_blank" class="prj-btn">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+        <div class="prj-card"><div class="prj-thumb"><img src="projects/thumbnails/p-4.jpg" data-video="projects/p-4.mp4" class="project-thumb" alt="Klee Boom"><div class="prj-play"><i class="fa-solid fa-play"></i></div></div><div class="prj-info"><div class="prj-tags"><span>Unity</span><span>SFX</span></div><h4>Klee Boom</h4><a href="https://github.com/your-username/project-4" target="_blank" class="prj-btn">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+        <div class="prj-card"><div class="prj-thumb"><img src="projects/thumbnails/p-5.jpg" data-video="projects/p-5.mp4" class="project-thumb" alt="Pop Cat"><div class="prj-play"><i class="fa-solid fa-play"></i></div></div><div class="prj-info"><div class="prj-tags"><span>JS</span><span>Fun</span></div><h4>Pop Cat</h4><a href="https://github.com/your-username/project-5" target="_blank" class="prj-btn">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+        <div class="prj-card"><div class="prj-thumb"><img src="projects/thumbnails/p-6.jpg" data-video="projects/p-6.mp4" class="project-thumb" alt="Student"><div class="prj-play"><i class="fa-solid fa-play"></i></div></div><div class="prj-info"><div class="prj-tags"><span>C#</span><span>.NET</span></div><h4>Student Management</h4><a href="https://github.com/your-username/project-6" target="_blank" class="prj-btn">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+        <div class="prj-card"><div class="prj-thumb"><img src="projects/thumbnails/p-7.jpg" data-video="projects/p-7.mp4" class="project-thumb" alt="TTS AI"><div class="prj-play"><i class="fa-solid fa-play"></i></div></div><div class="prj-info"><div class="prj-tags"><span>Python</span><span>AI</span></div><h4>Text To Speech AI</h4><a href="https://github.com/your-username/project-7" target="_blank" class="prj-btn">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+        <div class="prj-card"><div class="prj-thumb"><img src="projects/thumbnails/p-8.jpg" data-video="projects/p-8.mp4" class="project-thumb" alt="React Shop"><div class="prj-play"><i class="fa-solid fa-play"></i></div></div><div class="prj-info"><div class="prj-tags"><span>React</span><span>CSS</span></div><h4>React Shop</h4><a href="https://github.com/your-username/project-8" target="_blank" class="prj-btn">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+        <div class="prj-card"><div class="prj-thumb"><img src="projects/thumbnails/p-9.jpg" data-video="projects/p-9.mp4" class="project-thumb" alt="Login"><div class="prj-play"><i class="fa-solid fa-play"></i></div></div><div class="prj-info"><div class="prj-tags"><span>HTML</span><span>JS</span></div><h4>Random Login</h4><a href="https://github.com/your-username/project-9" target="_blank" class="prj-btn">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+        <div class="prj-card"><div class="prj-thumb"><img src="projects/thumbnails/p-10.jpg" data-video="projects/p-10.mp4" class="project-thumb" alt="JS Asst"><div class="prj-play"><i class="fa-solid fa-play"></i></div></div><div class="prj-info"><div class="prj-tags"><span>JS</span><span>API</span></div><h4>JS Assistant</h4><a href="https://github.com/your-username/project-10" target="_blank" class="prj-btn">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </div>
+    <div id="videoModal" class="video-modal hidden">
+        <span class="close-modal">&times;</span>
+        <video id="projectVideo" controls autoplay></video>
+    </div>
+</section>
+
+<!-- ──────────── MILESTONES ──────────── -->
+<section class="milestones-v2" id="achievements">
+    <div class="reveal sec-header center">
+        <div class="pill-tag center"><i class="fa-solid fa-trophy"></i> Milestones</div>
+        <h2 class="sec-title">My <span>Journey</span></h2>
+    </div>
+    <div class="ml-timeline">
+        <div class="ml-line"></div>
+        <div class="reveal ml-item left">
+            <div class="ml-dot"><i class="fa-brands fa-github"></i></div>
+            <div class="ml-card"><span class="ml-year">2020</span><h4>First GitHub Repository</h4><p>Pushed my first project to GitHub, starting a version-controlled workflow from day one.</p></div>
+        </div>
+        <div class="reveal ml-item right">
+            <div class="ml-dot"><i class="fa-solid fa-gamepad"></i></div>
+            <div class="ml-card"><span class="ml-year">2021</span><h4>Published First Game</h4><p>Released a fully playable indie game on itch.io and received my first real player feedback.</p></div>
+        </div>
+        <div class="reveal ml-item left">
+            <div class="ml-dot"><i class="fa-solid fa-globe"></i></div>
+            <div class="ml-card"><span class="ml-year">2021</span><h4>Deployed Personal Website</h4><p>Built and shipped a portfolio site — combining web skills with personal branding.</p></div>
+        </div>
+        <div class="reveal ml-item right">
+            <div class="ml-dot"><i class="fa-solid fa-trophy"></i></div>
+            <div class="ml-card"><span class="ml-year">2022</span><h4>Won Local Hackathon</h4><p>Led a team to victory in a 24-hour web development hackathon, delivering under real pressure.</p></div>
+        </div>
+        <div class="reveal ml-item left">
+            <div class="ml-dot"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="ml-card"><span class="ml-year">2023</span><h4>Completed Game Dev Bootcamp</h4><p>Graduated from a rigorous game development programme with hands-on Unity and Godot projects.</p></div>
+        </div>
+        <div class="reveal ml-item right">
+            <div class="ml-dot"><i class="fa-solid fa-users"></i></div>
+            <div class="ml-card"><span class="ml-year">2024</span><h4>Led Remote Team Project</h4><p>Directed a cross-timezone team to ship a multiplayer prototype — delivered on schedule.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────── STATS ──────────── -->
+<section class="stats-v2" id="stats">
+    <div class="stv2-bg-word" aria-hidden="true">NUMBERS</div>
+    <div class="stv2-grid">
+        <div class="reveal stv2-card">
+            <div class="stv2-icon"><i class="fa-solid fa-code"></i></div>
+            <div class="stv2-val"><span class="count" data-target="10">0</span><sup>+</sup></div>
+            <p>Projects Completed</p>
+        </div>
+        <div class="reveal stv2-card" style="--rd:100ms">
+            <div class="stv2-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <div class="stv2-val"><span class="count" data-target="5">0</span><sup>+</sup></div>
+            <p>Years Experience</p>
+        </div>
+        <div class="reveal stv2-card" style="--rd:200ms">
+            <div class="stv2-icon"><i class="fa-solid fa-face-smile"></i></div>
+            <div class="stv2-val"><span class="count" data-target="20">0</span><sup>+</sup></div>
+            <p>Happy Clients</p>
+        </div>
+        <div class="reveal stv2-card" style="--rd:300ms">
+            <div class="stv2-icon"><i class="fa-solid fa-star"></i></div>
+            <div class="stv2-val"><span class="count" data-target="26">0</span><sup>+</sup></div>
+            <p>Skills Mastered</p>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────── TESTIMONIALS ──────────── -->
+<section class="testi-v2" id="testimonials">
+    <div class="reveal sec-header center">
+        <div class="pill-tag center"><i class="fa-solid fa-comment-dots"></i> Feedback</div>
+        <h2 class="sec-title">Client <span>Words</span></h2>
+    </div>
+    <div class="reveal swiper testi-swiper" style="--rd:100ms">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide testi-card"><div class="tc-top"><img src="https://randomuser.me/api/portraits/men/1.jpg" alt="James"><div class="tc-top-text"><strong>James Holloway</strong><span>Lead Dev, Unity Studio</span></div><div class="tc-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div><p>"Delvin transformed our prototype into a functioning game in record time. Highly dependable and communicative."</p></div>
+            <div class="swiper-slide testi-card"><div class="tc-top"><img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Marcus"><div class="tc-top-text"><strong>Marcus Liu</strong><span>Frontend Engineer</span></div><div class="tc-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div><p>"His front-end work was sleek, performant, and well-structured. A reliable collaborator I will hire again."</p></div>
+            <div class="swiper-slide testi-card"><div class="tc-top"><img src="https://randomuser.me/api/portraits/men/20.jpg" alt="Sami"><div class="tc-top-text"><strong>Sami Khan</strong><span>Game Publisher</span></div><div class="tc-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div><p>"We needed our WebGL game optimised — he did it faster and cleaner than expected. Outstanding delivery."</p></div>
+            <div class="swiper-slide testi-card"><div class="tc-top"><img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Carlos"><div class="tc-top-text"><strong>Carlos Mendoza</strong><span>Project Manager</span></div><div class="tc-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div><p>"Excellent design sense with great communication throughout. Completely nailed the dashboard UI/UX."</p></div>
+            <div class="swiper-slide testi-card"><div class="tc-top"><img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Rick"><div class="tc-top-text"><strong>Rick Turner</strong><span>CTO, IndieGameTech</span></div><div class="tc-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div><p>"I've worked with many devs — Delvin's code quality and attention to detail stands out the most."</p></div>
+            <div class="swiper-slide testi-card"><div class="tc-top"><img src="https://randomuser.me/api/portraits/men/53.jpg" alt="Junaid"><div class="tc-top-text"><strong>Junaid Abbas</strong><span>UI/UX Consultant</span></div><div class="tc-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div><p>"Our portfolio platform got a complete, modern makeover thanks to his clean and thoughtful UI design."</p></div>
+            <div class="swiper-slide testi-card"><div class="tc-top"><img src="https://randomuser.me/api/portraits/men/61.jpg" alt="Noah"><div class="tc-top-text"><strong>Noah Davis</strong><span>Full Stack Developer</span></div><div class="tc-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div><p>"Professional, punctual, and extremely talented in both web and game development. Highly recommended."</p></div>
+            <div class="swiper-slide testi-card"><div class="tc-top"><img src="https://randomuser.me/api/portraits/men/77.jpg" alt="Ali"><div class="tc-top-text"><strong>Ali Raza</strong><span>App Developer</span></div><div class="tc-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div><p>"We needed cross-platform UI done fast. Delvin delivered flawlessly — brilliant work from start to finish."</p></div>
+            <div class="swiper-slide testi-card"><div class="tc-top"><img src="https://randomuser.me/api/portraits/men/81.jpg" alt="Kevin"><div class="tc-top-text"><strong>Kevin Grant</strong><span>Backend Engineer</span></div><div class="tc-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div><p>"Our team was blown away by his professionalism and seamless integration with our entire tech stack."</p></div>
+            <div class="swiper-slide testi-card"><div class="tc-top"><img src="https://randomuser.me/api/portraits/men/90.jpg" alt="Zain"><div class="tc-top-text"><strong>Zain Iqbal</strong><span>Technical Co-Founder</span></div><div class="tc-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div></div><p>"Delvin didn't just meet expectations — he completely exceeded them. A true top-tier developer."</p></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<!-- ──────────── CONTACT ──────────── -->
+<section class="contact-v2" id="contact">
+    <div class="reveal ctv2-left">
+        <div class="pill-tag"><i class="fa-solid fa-paper-plane"></i> Let's Talk</div>
+        <h2 class="sec-title">Start a <span>Conversation</span></h2>
+        <p>Whether you have a project in mind, need a quote, or just want to say hi — my inbox is always open.</p>
+        <div class="ctv2-info">
+            <div class="ctv2-row"><div class="ctv2-icon"><i class="fa-solid fa-envelope"></i></div><div><strong>Email</strong><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f6e677c6e617c676e676a6a7d4f6a626e6663216c6062">[email&#160;protected]</a></span></div></div>
+            <div class="ctv2-row"><div class="ctv2-icon"><i class="fa-solid fa-phone"></i></div><div><strong>Phone</strong><span>+92 341 116 9676</span></div></div>
+            <div class="ctv2-row"><div class="ctv2-icon"><i class="fa-solid fa-location-dot"></i></div><div><strong>Location</strong><span>Punjab, Pakistan</span></div></div>
+        </div>
+        <div class="ctv2-socials">
+            <a href="#" class="ctv2-soc"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="ctv2-soc"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="ctv2-soc"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="ctv2-soc"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <img src="img/gogeta.png" class="ctv2-gogeta" alt="">
+    </div>
+    <div class="reveal ctv2-right" style="--rd:120ms">
+        <form class="ctv2-form" action="">
+            <h3>Send a Message</h3>
+            <div class="ctv2-field"><i class="fa-solid fa-user"></i><input type="text" placeholder="Your Name" required></div>
+            <div class="ctv2-field"><i class="fa-solid fa-envelope"></i><input type="email" placeholder="Email Address" required></div>
+            <div class="ctv2-field ctv2-ta"><i class="fa-solid fa-message"></i><textarea rows="5" placeholder="Your message..." required></textarea></div>
+            <button type="submit" class="ctv2-submit">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+    </div>
+</section>
+
+<!-- ──────────── FOOTER ──────────── -->
+<footer class="footer-v2">
+    <div class="fv2-top">
+        <div class="fv2-brand">
+            <span class="fv2-logo">Delvin<span>Dev</span></span>
+            <p>Game developer & web creator based in Pakistan. Turning ideas into playable experiences.</p>
+            <div class="fv2-socials">
+                <a href="#"><i class="ri-github-fill"></i></a>
+                <a href="#"><i class="ri-linkedin-box-fill"></i></a>
+                <a href="#"><i class="ri-twitter-x-fill"></i></a>
+                <a href="#"><i class="ri-instagram-fill"></i></a>
+                <a href="#"><i class="ri-youtube-fill"></i></a>
+            </div>
+        </div>
+        <div class="fv2-col">
+            <h4>Navigate</h4>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="fv2-col">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="#">2D Game Dev</a></li>
+                <li><a href="#">Game UI/UX</a></li>
+                <li><a href="#">Asset Creation</a></li>
+                <li><a href="#">Bug Fixing</a></li>
+                <li><a href="#">Web Portfolio</a></li>
+            </ul>
+        </div>
+        <div class="fv2-col">
+            <h4>Secret</h4>
+            <span id="kuruButton" class="kuru-btn">Kuru kuru &#x21BA;</span>
+        </div>
+    </div>
+    <div class="fv2-bottom">
+        <p>&copy; 2024 Ahsan Shaheer — All rights reserved.</p>
+        <a href="#home" class="scroll-top-btn"><i class="ri-arrow-up-s-fill"></i></a>
+    </div>
+    <button id="footerGrassButton" class="grass-btn" title="Touch some grass..." aria-label="Touch some grass">
+        <img id="footerGrassImage" src="img/grass.png" alt="Grass">
+    </button>
+</footer>
+
+<div id="kuruModal" class="video-modal hidden">
+    <video id="kurukuruVideo" controls><source src="img/kurukuru.mp4" type="video/mp4"></video>
+    <span class="close-modal">&times;</span>
+</div>
+
+<!-- Cursor -->
+<div class="cursor-ring"></div>
+<div class="cursor-dot"></div>
+
+<!-- Colour palette -->
+<div class="palette-wrap">
+    <button class="pal-toggle" id="colorToggle" title="Theme colour"></button>
+    <div class="pal-options" id="colorPalette">
+        <button class="pal-swatch active" data-color="#ffb7c5" style="background:#ffb7c5"></button>
+        <button class="pal-swatch" data-color="#f3722c" style="background:#f3722c"></button>
+        <button class="pal-swatch" data-color="#43aa8b" style="background:#43aa8b"></button>
+        <button class="pal-swatch" data-color="#277da1" style="background:#277da1"></button>
+        <button class="pal-swatch" data-color="#7209b7" style="background:#7209b7"></button>
+        <button class="pal-swatch" data-color="#f9c74f" style="background:#f9c74f"></button>
+        <button id="resetColors" class="pal-reset">Reset</button>
+    </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="./script.js"></script>
+<script src="./achievements.js"></script>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SCROLL ANIMATIONS — unique per section + stat counters + skill bars
+══════════════════════════════════════════════════════════════ -->
+<style>
+/* ── Base hidden state for all scroll-animated elements ── */
+[class*="sa-"] {
+    will-change: transform, opacity;
+}
+
+/* ABOUT — image slides in from left, text from right */
+.sa-slide-left  { opacity:0; transform:translateX(-70px); transition:opacity .75s ease, transform .75s cubic-bezier(.25,.46,.45,.94); transition-delay:var(--sd,0ms); }
+.sa-slide-right { opacity:0; transform:translateX(70px);  transition:opacity .75s ease, transform .75s cubic-bezier(.25,.46,.45,.94); transition-delay:var(--sd,0ms); }
+
+/* SKILLS — bars fade + rise */
+.sa-rise { opacity:0; transform:translateY(40px); transition:opacity .65s ease, transform .65s cubic-bezier(.25,.46,.45,.94); transition-delay:var(--sd,0ms); }
+
+/* SKILLS chips — pop in with bounce scale */
+.sa-pop  { opacity:0; transform:scale(.7) translateY(20px); transition:opacity .5s ease, transform .5s cubic-bezier(.34,1.56,.64,1); transition-delay:var(--sd,0ms); }
+
+/* PROCESS steps — cascade from bottom with slight rotate */
+.sa-cascade { opacity:0; transform:translateY(50px) rotate(3deg); transition:opacity .6s ease, transform .6s cubic-bezier(.34,1.4,.64,1); transition-delay:var(--sd,0ms); }
+
+/* SERVICES cards — zoom + fade */
+.sa-zoom { opacity:0; transform:scale(.88) translateY(24px); transition:opacity .55s ease, transform .55s cubic-bezier(.34,1.3,.64,1); transition-delay:var(--sd,0ms); }
+
+/* PROJECTS cards — flip in from slight Y rotation */
+.sa-flip { opacity:0; transform:perspective(600px) rotateX(18deg) translateY(30px); transition:opacity .6s ease, transform .6s cubic-bezier(.25,.46,.45,.94); transition-delay:var(--sd,0ms); }
+
+/* MILESTONES — alternate left/right slide */
+.sa-tl-left  { opacity:0; transform:translateX(-50px); transition:opacity .65s ease, transform .65s cubic-bezier(.25,.46,.45,.94); transition-delay:var(--sd,0ms); }
+.sa-tl-right { opacity:0; transform:translateX(50px);  transition:opacity .65s ease, transform .65s cubic-bezier(.25,.46,.45,.94); transition-delay:var(--sd,0ms); }
+
+/* STATS — scale up from below */
+.sa-scale { opacity:0; transform:scale(.7) translateY(30px); transition:opacity .5s ease, transform .5s cubic-bezier(.34,1.6,.64,1); transition-delay:var(--sd,0ms); }
+
+/* TESTIMONIALS — rotate-fade in */
+.sa-rot { opacity:0; transform:translateY(40px) rotate(-4deg); transition:opacity .6s ease, transform .6s cubic-bezier(.34,1.3,.64,1); transition-delay:var(--sd,0ms); }
+
+/* CONTACT — split slide */
+.sa-contact-left  { opacity:0; transform:translateX(-60px) skewX(3deg);  transition:opacity .7s ease, transform .7s cubic-bezier(.25,.46,.45,.94); transition-delay:var(--sd,0ms); }
+.sa-contact-right { opacity:0; transform:translateX(60px) skewX(-3deg); transition:opacity .7s ease, transform .7s cubic-bezier(.25,.46,.45,.94); transition-delay:var(--sd,0ms); }
+
+/* ── Visible state — same for everything ── */
+.sa-slide-left.in,  .sa-slide-right.in,
+.sa-rise.in,        .sa-pop.in,
+.sa-cascade.in,     .sa-zoom.in,
+.sa-flip.in,        .sa-tl-left.in,
+.sa-tl-right.in,    .sa-scale.in,
+.sa-rot.in,         .sa-contact-left.in,
+.sa-contact-right.in {
+    opacity:1;
+    transform:none;
+}
+
+/* Section title underline wipe — always visible, no scroll dep */
+.sec-title { position:relative; }
+</style>
+
+<script>
+(function(){
+    'use strict';
+
+    /* ── Helper: observe once then stop ── */
+    function onEnter(selector, fn, threshold){
+        threshold = threshold || 0.12;
+        var els = document.querySelectorAll(selector);
+        if(!els.length) return;
+        var io = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){
+                if(!e.isIntersecting) return;
+                fn(e.target);
+                io.unobserve(e.target);
+            });
+        }, {threshold: threshold});
+        els.forEach(function(el){ io.observe(el); });
+    }
+
+    /* ══════════════════════════════════
+       ABOUT — image slides from left, text from right
+    ══════════════════════════════════ */
+    var aboutLeft  = document.querySelector('.av2-left');
+    var aboutRight = document.querySelector('.av2-right');
+    if(aboutLeft)  aboutLeft.classList.add('sa-slide-left');
+    if(aboutRight) aboutRight.classList.add('sa-slide-right');
+    onEnter('.av2-left',  function(el){ el.classList.add('in'); });
+    onEnter('.av2-right', function(el){ el.classList.add('in'); });
+
+    /* Info cards stagger */
+    document.querySelectorAll('.av2-card').forEach(function(el, i){
+        el.classList.add('sa-rise');
+        el.style.setProperty('--sd', (i * 80 + 200) + 'ms');
+    });
+    onEnter('.av2-card', function(el){ el.classList.add('in'); });
+
+    /* ══════════════════════════════════
+       SKILLS — header rises, bars rise, chips pop
+    ══════════════════════════════════ */
+    document.querySelectorAll('.skills-v2 .sec-header').forEach(function(el){
+        el.classList.add('sa-rise');
+    });
+    onEnter('.skills-v2 .sec-header', function(el){ el.classList.add('in'); });
+
+    document.querySelectorAll('.sv2-panel-title').forEach(function(el){
+        el.classList.add('sa-rise');
+    });
+    onEnter('.sv2-panel-title', function(el){ el.classList.add('in'); });
+
+    document.querySelectorAll('.sv2-bar').forEach(function(el, i){
+        el.classList.add('sa-rise');
+        el.style.setProperty('--sd', (i * 75) + 'ms');
+    });
+    onEnter('.sv2-bar', function(el){
+        el.classList.add('in');
+        /* Animate the XP fill bar once visible */
+        var fill = el.querySelector('.sv2-xp-fill');
+        if(fill) fill.style.width = (el.dataset.pct || 0) + '%';
+    }, 0.25);
+
+    document.querySelectorAll('.sv2-chip').forEach(function(el, i){
+        el.classList.add('sa-pop');
+        el.style.setProperty('--sd', (i * 50) + 'ms');
+    });
+    onEnter('.sv2-chip', function(el){ el.classList.add('in'); }, 0.1);
+
+    /* ══════════════════════════════════
+       PROCESS — section header + steps cascade
+    ══════════════════════════════════ */
+    document.querySelectorAll('.process-v2 .sec-header').forEach(function(el){
+        el.classList.add('sa-rise');
+    });
+    onEnter('.process-v2 .sec-header', function(el){ el.classList.add('in'); });
+
+    document.querySelectorAll('.pv2-step').forEach(function(el, i){
+        el.classList.add('sa-cascade');
+        el.style.setProperty('--sd', (i * 110) + 'ms');
+    });
+    onEnter('.pv2-step', function(el){ el.classList.add('in'); }, 0.1);
+
+    /* ══════════════════════════════════
+       SERVICES — header rises, cards zoom in staggered
+    ══════════════════════════════════ */
+    document.querySelectorAll('.services-v2 .sec-header').forEach(function(el){
+        el.classList.add('sa-rise');
+    });
+    onEnter('.services-v2 .sec-header', function(el){ el.classList.add('in'); });
+
+    document.querySelectorAll('.svc-card').forEach(function(el, i){
+        el.classList.add('sa-zoom');
+        el.style.setProperty('--sd', (i * 90) + 'ms');
+    });
+    onEnter('.svc-card', function(el){ el.classList.add('in'); }, 0.08);
+
+    /* ══════════════════════════════════
+       PROJECTS — header + cards flip in
+    ══════════════════════════════════ */
+    document.querySelectorAll('.projects-v2 .sec-header').forEach(function(el){
+        el.classList.add('sa-rise');
+    });
+    onEnter('.projects-v2 .sec-header', function(el){ el.classList.add('in'); });
+
+    document.querySelectorAll('.prj-card').forEach(function(el, i){
+        el.classList.add('sa-flip');
+        el.style.setProperty('--sd', (i * 70) + 'ms');
+    });
+    onEnter('.prj-card', function(el){ el.classList.add('in'); }, 0.08);
+
+    /* ══════════════════════════════════
+       MILESTONES — alternate left/right per item
+    ══════════════════════════════════ */
+    document.querySelectorAll('.milestones-v2 .sec-header').forEach(function(el){
+        el.classList.add('sa-rise');
+    });
+    onEnter('.milestones-v2 .sec-header', function(el){ el.classList.add('in'); });
+
+    document.querySelectorAll('.ml-item').forEach(function(el, i){
+        var cls = el.classList.contains('left') ? 'sa-tl-left' : 'sa-tl-right';
+        el.classList.add(cls);
+        el.style.setProperty('--sd', (i * 80) + 'ms');
+    });
+    onEnter('.ml-item', function(el){ el.classList.add('in'); }, 0.1);
+
+    /* ══════════════════════════════════
+       STATS — cards scale up + counter animation
+    ══════════════════════════════════ */
+    document.querySelectorAll('.stats-v2 .sec-header, .stv2-grid').forEach(function(el){
+        el.classList.add('sa-rise');
+    });
+    onEnter('.stats-v2 .sec-header', function(el){ el.classList.add('in'); });
+    onEnter('.stv2-grid', function(el){ el.classList.add('in'); });
+
+    document.querySelectorAll('.stv2-card').forEach(function(el, i){
+        el.classList.add('sa-scale');
+        el.style.setProperty('--sd', (i * 100) + 'ms');
+    });
+
+    /* Counter runs when EACH card enters view */
+    onEnter('.stv2-card', function(el){
+        el.classList.add('in');
+        var counter = el.querySelector('.count');
+        if(!counter || counter._ran) return;
+        counter._ran = true;
+        var target = parseInt(counter.dataset.target, 10) || 0;
+        var duration = 1600;
+        var start = null;
+        function step(ts){
+            if(!start) start = ts;
+            var progress = Math.min((ts - start) / duration, 1);
+            /* Ease out cubic */
+            var ease = 1 - Math.pow(1 - progress, 3);
+            counter.textContent = Math.round(ease * target);
+            if(progress < 1) requestAnimationFrame(step);
+            else counter.textContent = target;
+        }
+        requestAnimationFrame(step);
+    }, 0.2);
+
+    /* ══════════════════════════════════
+       TESTIMONIALS — cards rotate-fade in
+    ══════════════════════════════════ */
+    document.querySelectorAll('.testi-v2 .sec-header').forEach(function(el){
+        el.classList.add('sa-rise');
+    });
+    onEnter('.testi-v2 .sec-header', function(el){ el.classList.add('in'); });
+
+    /* Swiper manages slides so we animate the swiper wrapper */
+    var testiSwiper = document.querySelector('.testi-swiper');
+    if(testiSwiper){
+        testiSwiper.classList.add('sa-rot');
+    }
+    onEnter('.testi-swiper', function(el){ el.classList.add('in'); }, 0.1);
+
+    /* ══════════════════════════════════
+       CONTACT — left panel slides left, right slides right
+    ══════════════════════════════════ */
+    var ctLeft  = document.querySelector('.ctv2-left');
+    var ctRight = document.querySelector('.ctv2-right');
+    if(ctLeft)  ctLeft.classList.add('sa-contact-left');
+    if(ctRight) ctRight.classList.add('sa-contact-right');
+    onEnter('.ctv2-left',  function(el){ el.classList.add('in'); }, 0.1);
+    onEnter('.ctv2-right', function(el){ el.classList.add('in'); }, 0.1);
+
+    /* Info rows in contact stagger */
+    document.querySelectorAll('.ctv2-row').forEach(function(el, i){
+        el.classList.add('sa-rise');
+        el.style.setProperty('--sd', (i * 90 + 250) + 'ms');
+    });
+    onEnter('.ctv2-row', function(el){ el.classList.add('in'); });
+
+    /* ══════════════════════════════════
+       FOOTER — brand + cols rise
+    ══════════════════════════════════ */
+    document.querySelectorAll('.fv2-brand, .fv2-col').forEach(function(el, i){
+        el.classList.add('sa-rise');
+        el.style.setProperty('--sd', (i * 80) + 'ms');
+    });
+    onEnter('.fv2-brand', function(el){ el.classList.add('in'); });
+    onEnter('.fv2-col',   function(el){ el.classList.add('in'); });
+
+})();
+</script>
+</body>
+
+</html>
